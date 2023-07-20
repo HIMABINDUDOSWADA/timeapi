@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timeapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: timeapi
+  template:
+    metadata:
+      labels:
+        app: timeapi
+    spec:
+      containers:
+        - name: timeapi
+          image: timeapi.azurecr.io/time-0.0.1-snapshot:latest
+          ports:
+            - containerPort: 8080
